@@ -8,7 +8,7 @@
 // ESP32 配置 driver/gpio.h
 // 选择模式
 #define useArduino 1    
-#define useSTM32 0  
+#define useSTM32 0 
 #define useESP32 1
 //! Include here
 #if useArduino  
@@ -39,10 +39,10 @@ enum
 typedef struct 
 {
     void (*init)(int pin);
-    #if useSTM32 == 1
+    #if useSTM32 
         int (*read)(GPIO_TypeDef PROT ,uint16_t gpio_pin);
     #endif
-    #if useESP32 == 1 
+    #if useESP32 
         int (*read)(int pin);
     
     #endif
