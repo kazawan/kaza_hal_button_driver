@@ -1,5 +1,9 @@
 # 测试简易移植按键库
 
+version v0.2
+
+增加适配STM32 HAL
+
 暂时只适配 arduino esp32
 
 ## 配置管脚 api

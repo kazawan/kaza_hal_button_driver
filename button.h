@@ -34,10 +34,19 @@ enum
     LONG_RELEASE
 }KEY_STATE;
 
+
+
 typedef struct 
 {
     void (*init)(int pin);
-    int (*read)(int pin);
+    #if useSTM32 == 1
+        int (*read)(GPIO_TypeDef PROT ,uint16_t gpio_pin);
+    #endif
+    #if useESP32 == 1 
+        int (*read)(int pin);
+    
+    #endif
+    // int (*read)(int pin);
     int (*Get_millis)(void);
     int PIN;
     int KEY_UP;
