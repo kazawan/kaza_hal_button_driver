@@ -5,8 +5,10 @@ version v0.3
 v0.3 
   * 增加适配上下拉    
   * 增加中文注释    
+
 v0.2
-  * 增加适配STM32 HAL    
+  * 增加适配STM32 HAL
+  
 v0.1
   * 暂时只适配 arduino esp32   
 
