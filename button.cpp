@@ -2,8 +2,21 @@
 
 
 void button_scan(HardwareBtn_t *btn)
-{
-    if (btn->read(btn->PIN) == 0 && btn->KEY_UP == 1)
+{   
+
+    /* 通过结构体内的isPULLUP 判断闭合时用 1 还是 0 */
+    int KEY_CLOSE , KEY_OPEN ;
+    if(btn->isPULLUP){
+         KEY_CLOSE = 0 ;
+         KEY_OPEN = 1 ;
+    }else{
+         KEY_CLOSE = 1 ;
+         KEY_OPEN = 0 ;
+    }
+
+
+
+    if (btn->read(btn->PIN) == KEY_CLOSE && btn->KEY_UP == 1)
     {
         if (btn->Get_millis() - btn->CURRENT_TIME > btn->PRESS_DEBOUNCE_TIME)
         {
@@ -15,7 +28,7 @@ void button_scan(HardwareBtn_t *btn)
             }
         }
     }
-    else if (btn->read(btn->PIN) == 1 && btn->KEY_UP == 0)
+    else if (btn->read(btn->PIN) == KEY_OPEN && btn->KEY_UP == 0)
     {
         if (btn->BUTTON_STATE == PRESS)
         {
